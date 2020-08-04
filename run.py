@@ -1,5 +1,5 @@
 import time
-from wtafinance.wta import wta_data
+from wtafinance.wtastock import wta_data
 
 if __name__ == '__main__':
     # pro = ts.pro_api()

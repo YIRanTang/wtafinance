@@ -9,7 +9,7 @@ class DataApi(object):
     def __init__(self,token, timeout=15):
         self._token = token
         self._timeout = timeout
-        self.http_url = "http://127.0.0.1:8000/app_finance/apidata"
+        self.http_url = "http://106.53.251.60/app_finance/apidata"
 
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
@@ -20,7 +20,6 @@ class DataApi(object):
 
 
     def query(self,api_name, **kwargs):
-        print("kwargs:",kwargs)
         data={
             "token":self._token,
             "api_name":api_name,
@@ -41,5 +40,4 @@ class DataApi(object):
             return pd.DataFrame()
 
     def __getattr__(self, api_name,**kwargs):
-        print(api_name)
         return partial(self.query,api_name)
