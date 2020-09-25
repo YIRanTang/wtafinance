@@ -6,10 +6,11 @@ from functools import partial
 class DataApi(object):
     _instance = None
 
-    def __init__(self,token, timeout=15):
-        self._token = token
+    def __init__(self,secret_key,secret_id, timeout=15):
+        self._secret_key = secret_key
+        self._secret_id = secret_id
         self._timeout = timeout
-        self.http_url = "http://106.53.251.60/app_finance/apidata"
+        self.http_url = "http://127.0.0.1:8000/app_finance/apidata"
 
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
@@ -21,9 +22,10 @@ class DataApi(object):
 
     def query(self,api_name, **kwargs):
         data={
-            "token":self._token,
+            "secret_key":self._secret_key,
+            "secret_id":self._secret_id,
             "api_name":api_name,
-            "params":kwargs
+            "api_params":kwargs
         }
         res = requests.get(self.http_url,json=data, timeout=60)
         if res:

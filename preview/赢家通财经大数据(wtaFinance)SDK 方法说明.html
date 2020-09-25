@@ -1,0 +1,6145 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:赢家通财经大数据(wtaFinance)SDK 方法说明</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h2 id="-wtafinance-sdk-">赢家通财经大数据(wtaFinance)SDK 方法说明</h2>
+<h2 id="-">历史行情/复权数据</h2>
+<p><strong>接口：getWtaHistData</strong></p>
+<p><strong>描述：获取股票基础K线数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票类型(0深证,1上证)</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">Dict</td>
+<td style="text-align:left">时间区间</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">最近100天（示例：<code>{&quot;start&quot;:&quot;2020-08-10&quot;,&quot;end&quot;:&quot;2020-08-20&quot;}</code>）</td>
+</tr>
+<tr>
+<td style="text-align:left">is_dapan</td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">是否查找指数</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">fqt</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">复权值（0：不复权，1：前复权，2：后复权）</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">data</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">日期,开盘价,收盘价,最高价,最低价,成交量,成交额,振幅,涨跌幅,换手率</td>
+</tr>
+<tr>
+<td style="text-align:left">is_dapan</td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">是否为指数数据</td>
+</tr>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票类型(0深证,1上证)</td>
+</tr>
+<tr>
+<td style="text-align:left">fqt</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">复权值(0前复权,1不复权,2后复权)</td>
+</tr>
+<tr>
+<td style="text-align:left">high</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">最高价</td>
+</tr>
+<tr>
+<td style="text-align:left">vol2</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">成交额</td>
+</tr>
+<tr>
+<td style="text-align:left">open</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">开盘价</td>
+</tr>
+<tr>
+<td style="text-align:left">low</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">最低价</td>
+</tr>
+<tr>
+<td style="text-align:left">tr</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">换手率</td>
+</tr>
+<tr>
+<td style="text-align:left">Amplitude</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">振幅</td>
+</tr>
+<tr>
+<td style="text-align:left">Change</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">涨跌幅</td>
+</tr>
+<tr>
+<td style="text-align:left">close</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">收盘价</td>
+</tr>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">时间</td>
+</tr>
+<tr>
+<td style="text-align:left">vol1</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">成交量</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行历史的K线数据
+data = wta.getWtaHistData(code=&quot;000001&quot;,is_dapan=False)
+</code></pre>
+<p>或者：</p>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行复权后历史的K线数据
+data = wta.getWtaHistData(code=&quot;000001&quot;,is_dapan=False,fqt=&quot;2&quot;)
+</code></pre>
+<hr>
+<h2 id="-">实时行情</h2>
+<p><strong>接口：getWtaRealQuotes</strong></p>
+<p><strong>描述：获取股票每日的分时数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票类型(0深证,1上证)</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">is_dapan</td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">是否查找指数</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">Dict</td>
+<td style="text-align:left">时间区间</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">最近100天（示例：<code>{&quot;start&quot;:&quot;2020-08-10&quot;,&quot;end&quot;:&quot;2020-08-20&quot;}</code>）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">trends</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">分时数据（日期,开盘价,收盘价,最高价,最低价,成交量,成交额,均价）</td>
+</tr>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">日期</td>
+</tr>
+<tr>
+<td style="text-align:left">preClose</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">昨日收盘价</td>
+</tr>
+<tr>
+<td style="text-align:left">is_dapan</td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">是否为指数数据</td>
+</tr>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票类型(0深证,1上证)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行昨天的分钟走势数据
+data = wta.getWtaRealQuotes(code=&quot;000001&quot;,is_dapan=False)
+</code></pre>
+<p>或者：</p>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行2020-08-07日的分钟走势数据
+data = wta.getWtaRealQuotes(code=&quot;000001&quot;,is_dapan=False,date=&quot;2020-08-07&quot;)
+</code></pre>
+<hr>
+<h2 id="-">历史分笔</h2>
+<p><strong>接口：getWtaTodayTick</strong></p>
+<p><strong>描述：获取股票每日的分笔交易数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">Dict</td>
+<td style="text-align:left">时间区间</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">最近100天（示例：<code>{&quot;start&quot;:&quot;2020-08-10&quot;,&quot;end&quot;:&quot;2020-08-20&quot;}</code>）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">data</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">分笔数据（序号/分时/成交价格/价格变动/成交量/成交价格/买卖性质(买盘，买盘，中性盘)）</td>
+</tr>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">日期</td>
+</tr>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票类型(0深证,1上证)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行昨天的分笔交易数据
+data = wta.getWtaTodayTick(code=&quot;000001&quot;)
+</code></pre>
+<p>或者：</p>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行2020-08-10的分笔交易数据
+data = wta.getWtaTodayTick(code=&quot;000001&quot;,date=&quot;2020-08-10&quot;)
+</code></pre>
+<hr>
+<h2 id="-">股票代码分类</h2>
+<p><strong>接口：getWtaCodeClass</strong></p>
+<p><strong>描述：获取股票代码列表</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">bk_name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">板块名称(沪深A股，上证A股，深证A股，中小板，创业板，科创板，沪股通，深股通，B股)</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票类型(0深证,1上证)</td>
+</tr>
+<tr>
+<td style="text-align:left">bk_name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">板块名称</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取沪深A股的股票列表
+data = wta.getWtaCodeClass(bk_name=&quot;沪深A股&quot;)
+</code></pre>
+<hr>
+<h2 id="-">股票概念分类</h2>
+<p><strong>接口：getWtaCodeClass</strong></p>
+<p><strong>描述：获取股票概念列表</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">bk_name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">概念名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">bk_name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">概念名称</td>
+</tr>
+<tr>
+<td style="text-align:left">bk_code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">概念名称</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取证金持股概念的股票列表
+data = wta.getWtaConceptClass(bk_name=&quot;证金持股&quot;)
+</code></pre>
+<hr>
+<h2 id="-">股票行业分类</h2>
+<p><strong>接口：getWtaIndustryClass</strong></p>
+<p><strong>描述：获取股票行业列表</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">bk_name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">行业名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">bk_name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">行业名称</td>
+</tr>
+<tr>
+<td style="text-align:left">bk_code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">行业名称</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取房地产行业的股票列表
+data = wta.getWtaConceptClass(bk_name=&quot;房地产&quot;)
+</code></pre>
+<hr>
+<h2 id="-">股票地域分类</h2>
+<p><strong>接口：getWtaAreaClass</strong></p>
+<p><strong>描述：获取股票地域列表</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">bk_name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">行业名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">bk_name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">地域名称</td>
+</tr>
+<tr>
+<td style="text-align:left">bk_code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">地域名称</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取山东板块的股票列表
+data = wta.getWtaConceptClass(bk_name=&quot;山东板块&quot;)
+</code></pre>
+<hr>
+<h2 id="-">终止上市股票列表</h2>
+<p><strong>接口：getWtaTerminaStocks</strong></p>
+<p><strong>描述：获取终止获暂停上市的股票列表</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">bk_name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">终止上市/暂停上市</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">bk_name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">概念名称</td>
+</tr>
+<tr>
+<td style="text-align:left">listing_date</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">上市日期</td>
+</tr>
+<tr>
+<td style="text-align:left">change_date</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">终止上市/暂停上市日期</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取终止上市的股票列表
+data = wta.getWtaTerminaStocks(bk_name=&quot;终止上市&quot;)
+</code></pre>
+<hr>
+<h2 id="-">个股上榜统计</h2>
+<p><strong>接口：getWtaCapTops</strong></p>
+<p><strong>描述：获取个股龙虎板上板统计</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">日期</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">昨日</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">scount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">卖出席位数</td>
+</tr>
+<tr>
+<td style="text-align:left">bcount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">买入席位数</td>
+</tr>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">日期</td>
+</tr>
+<tr>
+<td style="text-align:left">count</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">上榜次数</td>
+</tr>
+<tr>
+<td style="text-align:left">bamount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">龙虎板买入额</td>
+</tr>
+<tr>
+<td style="text-align:left">samount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">龙虎板卖出额</td>
+</tr>
+<tr>
+<td style="text-align:left">net</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">净额</td>
+</tr>
+<tr>
+<td style="text-align:left">zmoney</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">龙虎板总成交额</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取2020-08-07日的龙虎板上板统计列表
+data = wta.getWtaCapTops(date=&quot;2020-08-07&quot;)
+</code></pre>
+<hr>
+<h2 id="-">机构席位追踪</h2>
+<p><strong>接口：getWtaInstTops</strong></p>
+<p><strong>描述：获取机构席位追踪数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">日期</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">昨日</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">scount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">卖出席位数</td>
+</tr>
+<tr>
+<td style="text-align:left">bcount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">买入席位数</td>
+</tr>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">日期</td>
+</tr>
+<tr>
+<td style="text-align:left">bamount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">机构购买额</td>
+</tr>
+<tr>
+<td style="text-align:left">samount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">机构卖出额</td>
+</tr>
+<tr>
+<td style="text-align:left">net</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">净额</td>
+</tr>
+<tr>
+<td style="text-align:left">tmoney</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">龙虎板成交金额</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取2020-08-07日的机构席位追踪数据列表
+data = wta.getWtaInstTops(date=&quot;2020-08-07&quot;)
+</code></pre>
+<hr>
+<h2 id="-">营业部上榜统计</h2>
+<p><strong>接口：getWtaBrokerTops</strong></p>
+<p><strong>描述：获取营业部上榜统计数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">broker</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">营业部名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">日期</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">日期</td>
+</tr>
+<tr>
+<td style="text-align:left">sumActMoney</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">龙虎板成交金额</td>
+</tr>
+<tr>
+<td style="text-align:left">scount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">卖出席位数</td>
+</tr>
+<tr>
+<td style="text-align:left">samount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">累积卖出额</td>
+</tr>
+<tr>
+<td style="text-align:left">bcount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">买入席位数</td>
+</tr>
+<tr>
+<td style="text-align:left">bamount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">累积购买额</td>
+</tr>
+<tr>
+<td style="text-align:left">count</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">上榜次数</td>
+</tr>
+<tr>
+<td style="text-align:left">broker</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">营业部名称</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取2020-08-07日的营业部上榜统计数据列表
+data = wta.getWtaBrokerTops(date=&quot;2020-08-07&quot;)
+</code></pre>
+<hr>
+<h2 id="-">每日龙虎榜列表</h2>
+<p><strong>接口：getWtaTopList</strong></p>
+<p><strong>描述：获取每日龙虎榜列表数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">日期</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">date</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">日期</td>
+</tr>
+<tr>
+<td style="text-align:left">Turnover</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">市场总成交额</td>
+</tr>
+<tr>
+<td style="text-align:left">reason</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">上板原因</td>
+</tr>
+<tr>
+<td style="text-align:left">sratio</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">卖出占总成交比例</td>
+</tr>
+<tr>
+<td style="text-align:left">sell</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">卖出额</td>
+</tr>
+<tr>
+<td style="text-align:left">bratio</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">买入占总成交比例</td>
+</tr>
+<tr>
+<td style="text-align:left">buy</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">买入额</td>
+</tr>
+<tr>
+<td style="text-align:left">amount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">龙虎板成交额</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取2020-08-07日的龙虎榜列表列表
+data = wta.getWtaTopList(date=&quot;2020-08-07&quot;)
+</code></pre>
+<hr>
+<h2 id="-">机构成交明细表</h2>
+<p><strong>接口：getWtaInstDetail</strong></p>
+<p><strong>描述：获取机构成交明细数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">securities_company</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">证券公司名</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">securities_company</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">证券公司名</td>
+</tr>
+<tr>
+<td style="text-align:left">salesName</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">营业部名称</td>
+</tr>
+<tr>
+<td style="text-align:left">samount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">机构卖出额</td>
+</tr>
+<tr>
+<td style="text-align:left">bamount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">机构买入额</td>
+</tr>
+<tr>
+<td style="text-align:left">pBuy</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">买卖净额</td>
+</tr>
+<tr>
+<td style="text-align:left">bcount</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">买入席位数</td>
+</tr>
+<tr>
+<td style="text-align:left">tDate</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">交易日期</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取长江证券的机构成交明细数据
+data = wta.getWtaInstDetail(securities_company=&quot;长江证券&quot;)
+</code></pre>
+<hr>
+<h2 id="cpi-">CPI信息</h2>
+<p><strong>接口：getWtaCPI</strong></p>
+<p><strong>描述：获取CPI信息数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">month</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">月份</td>
+</tr>
+<tr>
+<td style="text-align:left">datavalue</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">增加值/增长率</td>
+</tr>
+<tr>
+<td style="text-align:left">year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">年份</td>
+</tr>
+<tr>
+<td style="text-align:left">affiliation</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">datavalue字段说明</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取CPI信息数据
+data = wta.getWtaCPI()
+</code></pre>
+<hr>
+<h2 id="gdp-">GDP信息</h2>
+<p><strong>接口：getWtaGDP</strong></p>
+<p><strong>描述：获取GDP信息数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">month</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">月份</td>
+</tr>
+<tr>
+<td style="text-align:left">datavalue</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">增加值/增长率</td>
+</tr>
+<tr>
+<td style="text-align:left">year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">年份</td>
+</tr>
+<tr>
+<td style="text-align:left">affiliation</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">datavalue字段说明</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取GDP信息数据
+data = wta.getWtaGDP()
+</code></pre>
+<hr>
+<h2 id="-">存款准备金率</h2>
+<p><strong>接口：getWtaDepositReserve</strong></p>
+<p><strong>描述：获取存款准备金率数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">pubDate</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">mediumInstitutionsRatioPre</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">effectiveDate</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">mediumInstitutionsRatioAfter</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">bigInstitutionsRatioAfter</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">bigInstitutionsRatioPre</td>
+<td style="text-align:left">String</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取存款准备金率数据
+data = wta.getWtaDepositRate()
+</code></pre>
+<hr>
+<h2 id="-">存款利率</h2>
+<p><strong>接口：getWtaDepositRate</strong></p>
+<p><strong>描述：获取存款利率数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">pubDate</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">fixedDepositRate2Year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">demandDepositRate</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">fixedDepositRate6Month</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">fixedDepositRate3Year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">installmentFixedDepositRate5Year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">fixedDepositRate5Year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">installmentFixedDepositRate3Year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">fixedDepositRate3Month</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">installmentFixedDepositRate1Year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">fixedDepositRate1Year</td>
+<td style="text-align:left">String</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取存款利率数据
+data = wta.getWtaDepositRate()
+</code></pre>
+<hr>
+<h2 id="-">贷款利率</h2>
+<p><strong>接口：getWtaLoanRate</strong></p>
+<p><strong>描述：获取贷款利率数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">mortgateRateBelow5Year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">pubDate</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">loanRate6MonthTo1Year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">loanRateAbove5Year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">loanRate1YearTo3Year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">mortgateRateAbove5Year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">loanRate6Month</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">loanRate3YearTo5Year</td>
+<td style="text-align:left">String</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取贷款利率数据
+data = wta.getWtaLoanRate()
+</code></pre>
+<hr>
+<h2 id="-">业绩报告</h2>
+<p><strong>接口：getWtaPerfReport</strong></p>
+<p><strong>描述：获取业绩报告数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">F001D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告时间</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">F011N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">营业利润率</td>
+</tr>
+<tr>
+<td style="text-align:left">F010N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">毛利率</td>
+</tr>
+<tr>
+<td style="text-align:left">F009N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">归属母公司所有者净利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F008N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">营业利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F007N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">营业成本</td>
+</tr>
+<tr>
+<td style="text-align:left">F006N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">营业收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F005N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">每股经营现金流量</td>
+</tr>
+<tr>
+<td style="text-align:left">F004N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">净资产收益率</td>
+</tr>
+<tr>
+<td style="text-align:left">F003N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">每股净资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F002N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">每股收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F001D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告期</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行的业绩报告数据
+data = wta.getWtaPerfReport(SECCODE=&quot;000001&quot;)
+</code></pre>
+<hr>
+<h2 id="-">业绩预告</h2>
+<p><strong>接口：getWtaForecastData</strong></p>
+<p><strong>描述：获取业绩预告数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">F001D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告时间</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">DECLAREDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">公告日期</td>
+</tr>
+<tr>
+<td style="text-align:left">F003V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">业绩类型</td>
+</tr>
+<tr>
+<td style="text-align:left">F009N</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">净利润增长幅下限</td>
+</tr>
+<tr>
+<td style="text-align:left">F010N</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">净利润增长幅上限</td>
+</tr>
+<tr>
+<td style="text-align:left">F001D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告年度</td>
+</tr>
+<tr>
+<td style="text-align:left">F004V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">业绩预告内容</td>
+</tr>
+<tr>
+<td style="text-align:left">F005V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">业绩变化原因</td>
+</tr>
+<tr>
+<td style="text-align:left">F002V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">申万二级行业</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行的业绩预告数据
+data = wta.getWtaForecastData(SECCODE=&quot;000001&quot;)
+</code></pre>
+<hr>
+<h2 id="-">货币供应量</h2>
+<p><strong>接口：getWtaMoneySupply</strong></p>
+<p><strong>描述：获取货币供应量年底余额数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">m1YOY</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">m0ChainRelative</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">m2ChainRelative</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">m1Month</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">statMonth</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">statYear</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">m2YOY</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">m1ChainRelative</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">m2Month</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">m0YOY</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">m0Month</td>
+<td style="text-align:left">String</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取货币供应量数据
+data = wta.getWtaMoneySupply()
+</code></pre>
+<hr>
+<h2 id="-">货币供应量年底余额</h2>
+<p><strong>接口：getWtaMoneySupplyBal</strong></p>
+<p><strong>描述：获取货币供应量年底余额数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">m0YearYOY</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">m1YearYOY</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">m0Year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">m2Year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">statYear</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">m1Year</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">m2YearYOY</td>
+<td style="text-align:left">String</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取货币供应量年底余额数据
+data = wta.getWtaMoneySupplyBal()
+</code></pre>
+<hr>
+<h2 id="-">偿债能力</h2>
+<p><strong>接口：getWtaDebtpayData</strong>
+<strong>
+描述：获取偿债能力数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告时间</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">F051N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">有形资产净值债务率</td>
+</tr>
+<tr>
+<td style="text-align:left">F050N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">现金到期债务比率</td>
+</tr>
+<tr>
+<td style="text-align:left">F049N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">保守速动比率</td>
+</tr>
+<tr>
+<td style="text-align:left">F048N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">流动负债比率</td>
+</tr>
+<tr>
+<td style="text-align:left">F047N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">非流动负债比率</td>
+</tr>
+<tr>
+<td style="text-align:left">F062N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">经营净现金比率（全部债务）</td>
+</tr>
+<tr>
+<td style="text-align:left">F061N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">经营净现金比率（短期债务）</td>
+</tr>
+<tr>
+<td style="text-align:left">F046N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">运营资金</td>
+</tr>
+<tr>
+<td style="text-align:left">F045N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">利息保障倍数</td>
+</tr>
+<tr>
+<td style="text-align:left">F044N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">现金比率</td>
+</tr>
+<tr>
+<td style="text-align:left">F039N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">产权比率</td>
+</tr>
+<tr>
+<td style="text-align:left">F041N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">资产负债比率</td>
+</tr>
+<tr>
+<td style="text-align:left">F043N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">速动比率</td>
+</tr>
+<tr>
+<td style="text-align:left">F042N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">流动比率</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告期</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行的偿债能力数据
+data = wta.getWtaDebtpayData(SECCODE=&quot;000001&quot;)
+</code></pre>
+<hr>
+<h2 id="-">基金持股</h2>
+<p><strong>接口：getWtaFundHoldings</strong></p>
+<p><strong>描述：获取基金持股数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告时间</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">F003N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">持股总市值</td>
+</tr>
+<tr>
+<td style="text-align:left">F002N</td>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">持股总数</td>
+</tr>
+<tr>
+<td style="text-align:left">F001N</td>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">基金覆盖家数</td>
+</tr>
+<tr>
+<td style="text-align:left">ID</td>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">序号</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告日期</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行的基金持股数据
+data = wta.getWtaFundHoldings(SECCODE=&quot;000001&quot;)
+</code></pre>
+<hr>
+<h2 id="-">成长能力</h2>
+<p><strong>接口：getWtaGrowthData</strong></p>
+<p><strong>描述：获取成长能力数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告时间</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">F026N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">固定资产增长率</td>
+</tr>
+<tr>
+<td style="text-align:left">F057N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资收益增长率</td>
+</tr>
+<tr>
+<td style="text-align:left">F054N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">净资产增长率</td>
+</tr>
+<tr>
+<td style="text-align:left">F053N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">净利润增长率</td>
+</tr>
+<tr>
+<td style="text-align:left">F058N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">营业利润增长率</td>
+</tr>
+<tr>
+<td style="text-align:left">F056N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">总资产增长率</td>
+</tr>
+<tr>
+<td style="text-align:left">F052N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">营业收入增长率</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告日期</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行的成长能力数据
+data = wta.getWtaGrowthData(SECCODE=&quot;000001&quot;)
+</code></pre>
+<hr>
+<h2 id="-">盈利能力</h2>
+<p><strong>接口：getWtaProfitData</strong></p>
+<p><strong>描述：获取盈利能力数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告时间</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">F088N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">年化费用期间毛利率</td>
+</tr>
+<tr>
+<td style="text-align:left">F085N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">基本获利能力</td>
+</tr>
+<tr>
+<td style="text-align:left">F082N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">净利含金量</td>
+</tr>
+<tr>
+<td style="text-align:left">F079N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">期间费用率</td>
+</tr>
+<tr>
+<td style="text-align:left">F078N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">毛利率%</td>
+</tr>
+<tr>
+<td style="text-align:left">F021N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">三费比重%</td>
+</tr>
+<tr>
+<td style="text-align:left">F020N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">成本费用利润率</td>
+</tr>
+<tr>
+<td style="text-align:left">F019N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">财务费用率</td>
+</tr>
+<tr>
+<td style="text-align:left">F018N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">管理费用率</td>
+</tr>
+<tr>
+<td style="text-align:left">F016N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">总资产报酬率</td>
+</tr>
+<tr>
+<td style="text-align:left">F015N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资收益率</td>
+</tr>
+<tr>
+<td style="text-align:left">F013N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">营业成本率</td>
+</tr>
+<tr>
+<td style="text-align:left">F012N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">营业税金率</td>
+</tr>
+<tr>
+<td style="text-align:left">F011N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">营业利润率</td>
+</tr>
+<tr>
+<td style="text-align:left">F017N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">净利润率</td>
+</tr>
+<tr>
+<td style="text-align:left">F068N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">净资产收益率-加权（扣除非经常性损益）</td>
+</tr>
+<tr>
+<td style="text-align:left">F067N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">净资产收益率-加权</td>
+</tr>
+<tr>
+<td style="text-align:left">F066N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">净资产收益率（扣除非经常性损益）</td>
+</tr>
+<tr>
+<td style="text-align:left">F081N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">净资产收益率</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告日期</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行的盈利能力数据
+data = wta.getWtaProfitData(SECCODE=&quot;000001&quot;)
+</code></pre>
+<hr>
+<h2 id="-">融资融券</h2>
+<p><strong>接口：getWtaMarginTrading</strong></p>
+<p><strong>描述：获取融资融券数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">TRADEDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">交易日期</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">F009N</td>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">融资融券余额</td>
+</tr>
+<tr>
+<td style="text-align:left">F008N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">融券余量金额</td>
+</tr>
+<tr>
+<td style="text-align:left">F006N</td>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">本日融券卖出量</td>
+</tr>
+<tr>
+<td style="text-align:left">F004N</td>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">本日融券余量</td>
+</tr>
+<tr>
+<td style="text-align:left">F002N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">本日融资买入额</td>
+</tr>
+<tr>
+<td style="text-align:left">F001N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">本日融资余额</td>
+</tr>
+<tr>
+<td style="text-align:left">TRADEDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">上市日期</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行的融资融券数据
+data = wta.getWtaMarginTrading(SECCODE=&quot;000001&quot;)
+</code></pre>
+<hr>
+<h2 id="-">新股数据</h2>
+<p><strong>接口：getWtaNewStocks</strong></p>
+<p><strong>描述：获取新股数据数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">F037D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">中签缴款日</td>
+</tr>
+<tr>
+<td style="text-align:left">F109D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">中签公告日</td>
+</tr>
+<tr>
+<td style="text-align:left">F108D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">摇号结果公告日</td>
+</tr>
+<tr>
+<td style="text-align:left">F006N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">上网发行中签率</td>
+</tr>
+<tr>
+<td style="text-align:left">F013N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">发行市盈率</td>
+</tr>
+<tr>
+<td style="text-align:left">F003N</td>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">总发行数量</td>
+</tr>
+<tr>
+<td style="text-align:left">F008N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">发行价</td>
+</tr>
+<tr>
+<td style="text-align:left">F002D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">申购日期</td>
+</tr>
+<tr>
+<td style="text-align:left">F006D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">上市日期</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取所有的新股数据
+data = wta.getWtaNewStocks()
+</code></pre>
+<hr>
+<h2 id="-">运营能力</h2>
+<p><strong>接口：getWtaOperaData</strong></p>
+<p><strong>描述：获取运营能力数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告日期</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">F080N</td>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">现金转换周期</td>
+</tr>
+<tr>
+<td style="text-align:left">F027N</td>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">应收账款周转天数</td>
+</tr>
+<tr>
+<td style="text-align:left">F022N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应收账款周转率</td>
+</tr>
+<tr>
+<td style="text-align:left">F024N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">运营资金周转率</td>
+</tr>
+<tr>
+<td style="text-align:left">F026N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">固定资产周转率</td>
+</tr>
+<tr>
+<td style="text-align:left">F030N</td>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">流动资产周转天数</td>
+</tr>
+<tr>
+<td style="text-align:left">F029N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">流动资产周转率</td>
+</tr>
+<tr>
+<td style="text-align:left">F028N</td>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">存货周转天数</td>
+</tr>
+<tr>
+<td style="text-align:left">F023N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">存货周转率</td>
+</tr>
+<tr>
+<td style="text-align:left">F031N</td>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">总资产周转天数</td>
+</tr>
+<tr>
+<td style="text-align:left">F025N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">总资产周转率</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告日期</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行的运营能力数据
+data = wta.getWtaOperaData(SECCODE=&quot;000001&quot;)
+</code></pre>
+<hr>
+<h2 id="-">限售股解禁</h2>
+<p><strong>接口：getWtaReleStock</strong></p>
+<p><strong>描述：获取限售股解禁数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">F003D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">公告日期</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">F008N</td>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">实际可流通数量</td>
+</tr>
+<tr>
+<td style="text-align:left">F005N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">实际解除限售比例</td>
+</tr>
+<tr>
+<td style="text-align:left">F004N</td>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">实际解除限售数量</td>
+</tr>
+<tr>
+<td style="text-align:left">F003D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">实际解除限售日期</td>
+</tr>
+<tr>
+<td style="text-align:left">DECLAREDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">公告日期</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行的限售股解禁数据
+data = wta.getWtaReleStock(SECCODE=&quot;000001&quot;)
+</code></pre>
+<hr>
+<h2 id="-">非金融利润表</h2>
+<p><strong>接口：getWtaIncomeStatement</strong></p>
+<p><strong>描述：获取非金融利润表数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告日期</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">DECLAREDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">公告日期</td>
+</tr>
+<tr>
+<td style="text-align:left">F065N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">资产减值损失（2019格式）</td>
+</tr>
+<tr>
+<td style="text-align:left">F064N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">信用减值损失（2019格式）</td>
+</tr>
+<tr>
+<td style="text-align:left">F063N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：利息收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F062N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：利息费用</td>
+</tr>
+<tr>
+<td style="text-align:left">MEMO</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">备注</td>
+</tr>
+<tr>
+<td style="text-align:left">F041N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：归属于少数股东</td>
+</tr>
+<tr>
+<td style="text-align:left">F040N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：归属于母公司</td>
+</tr>
+<tr>
+<td style="text-align:left">F039N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">八、综合收益总额</td>
+</tr>
+<tr>
+<td style="text-align:left">F038N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">七、其他综合收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F032N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">（二）稀释每股收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F031N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">（一）基本每股收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F029N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">少数股东损益</td>
+</tr>
+<tr>
+<td style="text-align:left">F028N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">归属于母公司所有者的净利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F061N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">终止经营净利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F060N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">持续经营净利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F027N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">五、净利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F026N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">加：影响净利润的其他科目</td>
+</tr>
+<tr>
+<td style="text-align:left">F025N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">减：所得税</td>
+</tr>
+<tr>
+<td style="text-align:left">F024N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">四、利润总额</td>
+</tr>
+<tr>
+<td style="text-align:left">F023N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">加：影响利润总额的其他科目</td>
+</tr>
+<tr>
+<td style="text-align:left">F022N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：非流动资产处置损失</td>
+</tr>
+<tr>
+<td style="text-align:left">F021N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">减：营业外支出</td>
+</tr>
+<tr>
+<td style="text-align:left">F050N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：非流动资产处置利得</td>
+</tr>
+<tr>
+<td style="text-align:left">F020N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">营业外收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F019N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">加：补贴收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F018N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">三、营业利</td>
+</tr>
+<tr>
+<td style="text-align:left">F017N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">影响营业利润的其他科目</td>
+</tr>
+<tr>
+<td style="text-align:left">F059N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">资产处置收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F058N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">净敞口套期收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F057N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">信用减值损失</td>
+</tr>
+<tr>
+<td style="text-align:left">F051N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">基它收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F037N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">汇兑收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F016N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：对联营企业和合营企业的投资收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F015N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F014N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">加：公允价值变动净收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F013N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">资产减值损失</td>
+</tr>
+<tr>
+<td style="text-align:left">F056N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">研发费用</td>
+</tr>
+<tr>
+<td style="text-align:left">F012N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">财务费用</td>
+</tr>
+<tr>
+<td style="text-align:left">F011N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">堪探费用</td>
+</tr>
+<tr>
+<td style="text-align:left">F010N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">管理费用</td>
+</tr>
+<tr>
+<td style="text-align:left">F009N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">销售费用</td>
+</tr>
+<tr>
+<td style="text-align:left">F008N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">营业税金及附加</td>
+</tr>
+<tr>
+<td style="text-align:left">F049N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">分保费用</td>
+</tr>
+<tr>
+<td style="text-align:left">F048N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">保单红利支出</td>
+</tr>
+<tr>
+<td style="text-align:left">F047N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">提取保险合同准备金净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F046N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">赔付支出净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F045N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">退保金</td>
+</tr>
+<tr>
+<td style="text-align:left">F044N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">手续费及佣金支出</td>
+</tr>
+<tr>
+<td style="text-align:left">F043N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">利息支出</td>
+</tr>
+<tr>
+<td style="text-align:left">F007N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：营业成本</td>
+</tr>
+<tr>
+<td style="text-align:left">F036N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">二、营业总成本</td>
+</tr>
+<tr>
+<td style="text-align:left">F042N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">手续费及佣金收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F034N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">已赚保费</td>
+</tr>
+<tr>
+<td style="text-align:left">F033N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">利息收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F006N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：营业收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F035N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">一、营业总收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F005V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报表来源</td>
+</tr>
+<tr>
+<td style="text-align:left">F004V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报表来源编码</td>
+</tr>
+<tr>
+<td style="text-align:left">F003V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">合并类型</td>
+</tr>
+<tr>
+<td style="text-align:left">F002V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">合并类型编码</td>
+</tr>
+<tr>
+<td style="text-align:left">F001D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告年度</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">截止日期</td>
+</tr>
+<tr>
+<td style="text-align:left">STARTDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">开始日期</td>
+</tr>
+<tr>
+<td style="text-align:left">ORGNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">机构名称</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行的非金融利润表数据
+data = wta.getWtaIncomeStatement(SECCODE=&quot;000001&quot;)
+</code></pre>
+<hr>
+<h2 id="-">金融利润表</h2>
+<p><strong>接口：getWtaFIncomeStatement</strong></p>
+<p><strong>描述：获取金融利润表数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告日期</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票简称</td>
+</tr>
+<tr>
+<td style="text-align:left">STARTDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">开始日期</td>
+</tr>
+<tr>
+<td style="text-align:left">DECLAREDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">公告日期</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">截止日期</td>
+</tr>
+<tr>
+<td style="text-align:left">F001D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告年度</td>
+</tr>
+<tr>
+<td style="text-align:left">F002V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">合并类型编码</td>
+</tr>
+<tr>
+<td style="text-align:left">F003V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">合并类型</td>
+</tr>
+<tr>
+<td style="text-align:left">F004V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报表来源编码</td>
+</tr>
+<tr>
+<td style="text-align:left">F005V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报表来源</td>
+</tr>
+<tr>
+<td style="text-align:left">F006N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">一、营业收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F007N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">利息净收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F008N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中:利息收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F009N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中:利息支出</td>
+</tr>
+<tr>
+<td style="text-align:left">F010N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">手续费及佣金净收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F011N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中:手续费及佣金收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F012N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中:手续费及佣金支出</td>
+</tr>
+<tr>
+<td style="text-align:left">F013N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：代理买卖证券业务净收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F014N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中:证券承销业务净收入　</td>
+</tr>
+<tr>
+<td style="text-align:left">F015N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中:委托客户管理资产业务净收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F016N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">已赚保费</td>
+</tr>
+<tr>
+<td style="text-align:left">F017N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">保险业务收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F018N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：分保费收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F019N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">减：分出保费</td>
+</tr>
+<tr>
+<td style="text-align:left">F020N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">提取未到期责任准备金</td>
+</tr>
+<tr>
+<td style="text-align:left">F021N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F022N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：对联营企业和合营企业的投资收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F023N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">公允价值变动收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F024N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">汇兑收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F025N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他业务收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F026N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">二、营业支出</td>
+</tr>
+<tr>
+<td style="text-align:left">F027N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">退保金</td>
+</tr>
+<tr>
+<td style="text-align:left">F028N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">赔付支出</td>
+</tr>
+<tr>
+<td style="text-align:left">F029N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">减：摊回赔付支出</td>
+</tr>
+<tr>
+<td style="text-align:left">F030N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">提取保险责任准备金</td>
+</tr>
+<tr>
+<td style="text-align:left">F031N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">减：摊回保险责任准备金</td>
+</tr>
+<tr>
+<td style="text-align:left">F032N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">保单红利支出</td>
+</tr>
+<tr>
+<td style="text-align:left">F033N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">分保费用</td>
+</tr>
+<tr>
+<td style="text-align:left">F034N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">营业税金及附加</td>
+</tr>
+<tr>
+<td style="text-align:left">F035N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">手续费及佣金支出</td>
+</tr>
+<tr>
+<td style="text-align:left">F036N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">业务及管理费</td>
+</tr>
+<tr>
+<td style="text-align:left">F037N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">减：摊回分保费用</td>
+</tr>
+<tr>
+<td style="text-align:left">F038N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">资产减值损失</td>
+</tr>
+<tr>
+<td style="text-align:left">F039N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他业务成本</td>
+</tr>
+<tr>
+<td style="text-align:left">F040N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">三、营业利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F041N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">加：补贴收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F042N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">营业外收入</td>
+</tr>
+<tr>
+<td style="text-align:left">F043N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">减：营业外支出</td>
+</tr>
+<tr>
+<td style="text-align:left">F044N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">加：影响利润总额的其他科目</td>
+</tr>
+<tr>
+<td style="text-align:left">F045N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">四、利润总额</td>
+</tr>
+<tr>
+<td style="text-align:left">F046N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">减：所得税</td>
+</tr>
+<tr>
+<td style="text-align:left">F047N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">加：影响净利润的其他科目</td>
+</tr>
+<tr>
+<td style="text-align:left">F048N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">五、净利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F049N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">（一）归属于母公司所有者的净利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F050N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">（二）少数股东损益</td>
+</tr>
+<tr>
+<td style="text-align:left">F052N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">（一）基本每股收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F053N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">（二）稀释每股收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F054N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">八、综合收益总额</td>
+</tr>
+<tr>
+<td style="text-align:left">F055N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：归属于母公司</td>
+</tr>
+<tr>
+<td style="text-align:left">F056N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：归属于少数股东</td>
+</tr>
+<tr>
+<td style="text-align:left">F057N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">七、其他综合收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F062N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其它收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F063N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">资产处置收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F064N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">持续经营净利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F065N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">终止经营净利润</td>
+</tr>
+<tr>
+<td style="text-align:left">ORGNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">机构名称</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行的金融利润表数据
+data = wta.getWtaFIncomeStatement(SECCODE=&quot;000001&quot;)
+</code></pre>
+<hr>
+<h2 id="-">非金融现金表</h2>
+<p><strong>接口：getWtaCashStatement</strong></p>
+<p><strong>描述：获取非金融现金表数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告日期</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">F070N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">加：其他原因对现金的影响</td>
+</tr>
+<tr>
+<td style="text-align:left">F071N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">现金及现金等价物净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F069N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">减：现金等价物的期初余额</td>
+</tr>
+<tr>
+<td style="text-align:left">F068N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">加：现金等价物的期末余额</td>
+</tr>
+<tr>
+<td style="text-align:left">F067N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">减：现金的期初余额</td>
+</tr>
+<tr>
+<td style="text-align:left">F066N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">现金的期末余额</td>
+</tr>
+<tr>
+<td style="text-align:left">F064N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">融资租入固定资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F063N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">一年内到期的可转换公司债券</td>
+</tr>
+<tr>
+<td style="text-align:left">F062N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">债务转为资本</td>
+</tr>
+<tr>
+<td style="text-align:left">F060N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">经营活动产生的现金流量净额2</td>
+</tr>
+<tr>
+<td style="text-align:left">F059N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他</td>
+</tr>
+<tr>
+<td style="text-align:left">F058N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">经营性应付项目的增加</td>
+</tr>
+<tr>
+<td style="text-align:left">F057N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">经营性应收项目的减少</td>
+</tr>
+<tr>
+<td style="text-align:left">F056N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">存货的减少</td>
+</tr>
+<tr>
+<td style="text-align:left">F055N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">递延所得税负债增加</td>
+</tr>
+<tr>
+<td style="text-align:left">F054N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">递延所得税资产减少</td>
+</tr>
+<tr>
+<td style="text-align:left">F053N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资损失</td>
+</tr>
+<tr>
+<td style="text-align:left">F052N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">财务费用</td>
+</tr>
+<tr>
+<td style="text-align:left">F051N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">公允价值变动损失</td>
+</tr>
+<tr>
+<td style="text-align:left">F050N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">固定资产报废损失</td>
+</tr>
+<tr>
+<td style="text-align:left">F049N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">处置固定资产、无形资产和其他长期资产的损失</td>
+</tr>
+<tr>
+<td style="text-align:left">F048N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">长期待摊费用摊销</td>
+</tr>
+<tr>
+<td style="text-align:left">F047N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">无形资产摊销</td>
+</tr>
+<tr>
+<td style="text-align:left">F091N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资性房地产的折旧及摊销</td>
+</tr>
+<tr>
+<td style="text-align:left">F046N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">固定资产折旧、油气资产折耗、生产性生物资产折旧</td>
+</tr>
+<tr>
+<td style="text-align:left">F045N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">加：资产减值准备</td>
+</tr>
+<tr>
+<td style="text-align:left">F044N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">净利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F041N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">期末现金及现金等价物余额</td>
+</tr>
+<tr>
+<td style="text-align:left">F040N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">期初现金及现金等价物余额</td>
+</tr>
+<tr>
+<td style="text-align:left">F039N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">五、现金及现金等价物净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F038N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">四(2)、其他原因对现金的影响</td>
+</tr>
+<tr>
+<td style="text-align:left">F037N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">四、汇率变动对现金的影响</td>
+</tr>
+<tr>
+<td style="text-align:left">F036N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">筹资活动产生的现金流量净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F035N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">筹资活动现金流出小计</td>
+</tr>
+<tr>
+<td style="text-align:left">F034N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付其他与筹资活动有关的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F090N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：子公司支付给少数股东的股利、利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F033N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">分配股利、利润或偿付利息支付的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F032N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">偿还债务支付的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F031N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">筹资活动现金流入小计</td>
+</tr>
+<tr>
+<td style="text-align:left">F030N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收到其他与筹资活动有关的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F076N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">发行债券收到的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F029N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">取得借款收到的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F089N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：子公司吸收少数股东投资收到的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F028N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">吸收投资收到的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F027N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资活动产生的现金流量净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F026N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资活动现金流出小计</td>
+</tr>
+<tr>
+<td style="text-align:left">F025N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付其他与投资活动有关的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F024N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">取得子公司及其他营业单位支付的现金净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F075N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">质押贷款净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F023N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资支付的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F022N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">购建固定资产、无形资产和其他长期资产支付的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F021N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资活动现金流入小计</td>
+</tr>
+<tr>
+<td style="text-align:left">F020N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收到其他与投资活动有关的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F019N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">处置子公司及其他营业单位收到的现金净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F018N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">处置固定资产、无形资产和其他长期资产收回的现金净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F017N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">取得投资收益收到的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F016N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收回投资收到的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F015N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">经营活动产生的现金流量净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F014N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">经营活动现金流出小计</td>
+</tr>
+<tr>
+<td style="text-align:left">F013N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付其他与经营活动有关的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F012N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付的各项税费</td>
+</tr>
+<tr>
+<td style="text-align:left">F011N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付给职工以及为职工支付的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F088N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付保单红利的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F087N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付利息、手续费及佣金的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F086N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付原保险合同赔付款项的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F085N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">存放中央银行和同业款项净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F084N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">客户贷款及垫款净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F010N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">购买商品、接受劳务支付的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F009N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">经营活动现金流入小计</td>
+</tr>
+<tr>
+<td style="text-align:left">F008N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收到其他与经营活动有关的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F007N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收到的税费返还</td>
+</tr>
+<tr>
+<td style="text-align:left">F083N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">回购业务资金净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F082N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">拆入资金净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F081N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收取利息、手续费及佣金的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F080N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">处置以公允价值计量且其变动计入当期损益的金融资产净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F079N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">保户储金及投资款净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F078N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收到再保险业务现金净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F077N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收到原保险合同保费取得的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F074N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">向其他金融机构拆入资金净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F073N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">向中央银行借款净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F072N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">客户存款和同业存放款项净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F006N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">销售商品、提供劳务收到的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F005V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报表来源</td>
+</tr>
+<tr>
+<td style="text-align:left">F004V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报表来源编码</td>
+</tr>
+<tr>
+<td style="text-align:left">F003V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">合并类型</td>
+</tr>
+<tr>
+<td style="text-align:left">F002V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">合并类型编码</td>
+</tr>
+<tr>
+<td style="text-align:left">F001D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告年度</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">截止日期</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行的非金融现金表数据
+data = wta.getWtaCashStatement(SECCODE=&quot;000001&quot;)
+</code></pre>
+<hr>
+<h2 id="-">金融现金表</h2>
+<p><strong>接口：getwtaFCashState</strong></p>
+<p><strong>描述：获取金融现金表数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告日期</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">F028N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">吸收投资收到的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F071N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">现金及现金等价物净增加额2</td>
+</tr>
+<tr>
+<td style="text-align:left">F070N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">加：其他原因对现金的影响2</td>
+</tr>
+<tr>
+<td style="text-align:left">F069N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">减：现金等价物的期初余额</td>
+</tr>
+<tr>
+<td style="text-align:left">F068N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">加：现金等价物的期末余额</td>
+</tr>
+<tr>
+<td style="text-align:left">F067N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">减：现金的期初余额</td>
+</tr>
+<tr>
+<td style="text-align:left">F066N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">现金的期末余额</td>
+</tr>
+<tr>
+<td style="text-align:left">F064N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">融资租入固定资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F063N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">一年内到期的可转换公司债券</td>
+</tr>
+<tr>
+<td style="text-align:left">F062N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">债务转为资本</td>
+</tr>
+<tr>
+<td style="text-align:left">F060N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">经营活动产生的现金流量净额2</td>
+</tr>
+<tr>
+<td style="text-align:left">F059N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他</td>
+</tr>
+<tr>
+<td style="text-align:left">F058N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">经营性应付项目的增加</td>
+</tr>
+<tr>
+<td style="text-align:left">F057N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">经营性应收项目的减少</td>
+</tr>
+<tr>
+<td style="text-align:left">F056N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">存货的减少</td>
+</tr>
+<tr>
+<td style="text-align:left">F055N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">递延所得税负债增加</td>
+</tr>
+<tr>
+<td style="text-align:left">F054N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">递延所得税资产减少</td>
+</tr>
+<tr>
+<td style="text-align:left">F053N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资损失</td>
+</tr>
+<tr>
+<td style="text-align:left">F052N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">财务费用</td>
+</tr>
+<tr>
+<td style="text-align:left">F051N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">公允价值变动损失</td>
+</tr>
+<tr>
+<td style="text-align:left">F050N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">固定资产报废损失</td>
+</tr>
+<tr>
+<td style="text-align:left">F049N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">处置固定资产、无形资产和其他长期资产的损失</td>
+</tr>
+<tr>
+<td style="text-align:left">F048N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">长期待摊费用摊销</td>
+</tr>
+<tr>
+<td style="text-align:left">F047N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">无形资产摊销</td>
+</tr>
+<tr>
+<td style="text-align:left">F091N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资性房地产的折旧及摊销</td>
+</tr>
+<tr>
+<td style="text-align:left">F046N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">固定资产折旧、油气资产折耗、生产性生物资产折旧</td>
+</tr>
+<tr>
+<td style="text-align:left">F045N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">加：资产减值准备</td>
+</tr>
+<tr>
+<td style="text-align:left">F044N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">净利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F041N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">期末现金及现金等价物余额</td>
+</tr>
+<tr>
+<td style="text-align:left">F040N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">期初现金及现金等价物余额</td>
+</tr>
+<tr>
+<td style="text-align:left">F039N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">五、现金及现金等价物净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F038N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">四(2)、其他原因对现金的影响</td>
+</tr>
+<tr>
+<td style="text-align:left">F037N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">四、汇率变动对现金的影响</td>
+</tr>
+<tr>
+<td style="text-align:left">F036N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">筹资活动产生的现金流量净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F035N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">筹资活动现金流出小计</td>
+</tr>
+<tr>
+<td style="text-align:left">F034N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付其他与筹资活动有关的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F090N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：子公司支付给少数股东的股利、利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F033N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">分配股利、利润或偿付利息支付的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F032N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">偿还债务支付的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F031N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">筹资活动现金流入小计</td>
+</tr>
+<tr>
+<td style="text-align:left">F030N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收到其他与筹资活动有关的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F076N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">发行债券收到的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F029N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">取得借款收到的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F089N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：子公司吸收少数股东投资收到的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F027N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资活动产生的现金流量净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F026N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资活动现金流出小计</td>
+</tr>
+<tr>
+<td style="text-align:left">F025N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付其他与投资活动有关的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F024N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">取得子公司及其他营业单位支付的现金净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F075N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">质押贷款净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F023N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资支付的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F022N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">购建固定资产、无形资产和其他长期资产支付的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F021N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资活动现金流入小计</td>
+</tr>
+<tr>
+<td style="text-align:left">F020N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收到其他与投资活动有关的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F019N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">处置子公司及其他营业单位收到的现金净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F018N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">处置固定资产、无形资产和其他长期资产收回的现金净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F017N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">取得投资收益收到的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F016N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收回投资收到的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F015N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">经营活动产生的现金流量净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F014N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">经营活动现金流出小计</td>
+</tr>
+<tr>
+<td style="text-align:left">F013N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付其他与经营活动有关的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F012N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付的各项税费</td>
+</tr>
+<tr>
+<td style="text-align:left">F011N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付给职工以及为职工支付的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F088N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付保单红利的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F087N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付利息、手续费及佣金的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F086N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">支付原保险合同赔付款项的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F085N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">存放中央银行和同业款项净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F084N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">客户贷款及垫款净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F010N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">购买商品、接受劳务支付的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F009N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">经营活动现金流入小计</td>
+</tr>
+<tr>
+<td style="text-align:left">F008N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收到其他与经营活动有关的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F007N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收到的税费返还</td>
+</tr>
+<tr>
+<td style="text-align:left">F083N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">回购业务资金净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F082N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">拆入资金净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F081N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收取利息、手续费及佣金的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F080N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">处置以公允价值计量且其变动计入当期损益的金融资产净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F079N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">保户储金及投资款净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F078N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收到再保险业务现金净额</td>
+</tr>
+<tr>
+<td style="text-align:left">F077N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">收到原保险合同保费取得的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F074N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">向其他金融机构拆入资金净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F073N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">向中央银行借款净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F072N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">客户存款和同业存放款项净增加额</td>
+</tr>
+<tr>
+<td style="text-align:left">F006N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">销售商品、提供劳务收到的现金</td>
+</tr>
+<tr>
+<td style="text-align:left">F005V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报表来源</td>
+</tr>
+<tr>
+<td style="text-align:left">F004V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报表来源编码</td>
+</tr>
+<tr>
+<td style="text-align:left">F003V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">合并类型</td>
+</tr>
+<tr>
+<td style="text-align:left">F002V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">合并类型编码</td>
+</tr>
+<tr>
+<td style="text-align:left">F001D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告年度</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">截止日期</td>
+</tr>
+<tr>
+<td style="text-align:left">STARTDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">开始日期</td>
+</tr>
+<tr>
+<td style="text-align:left">DECLAREDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">公告日期</td>
+</tr>
+<tr>
+<td style="text-align:left">ORGNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">机构名称</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行的金融现金表数据
+data = wta.getwtaFCashState(SECCODE=&quot;000001&quot;)
+</code></pre>
+<hr>
+<h2 id="-">非金融资产负债表</h2>
+<p><strong>接口：getWtaBalanceSheet</strong></p>
+<p><strong>描述：获取非金融资产负债表数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告日期</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">F032N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">开发支出</td>
+</tr>
+<tr>
+<td style="text-align:left">F122N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">租赁负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F121N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">使用权资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F120N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应收款项融资</td>
+</tr>
+<tr>
+<td style="text-align:left">MEMO</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">备注</td>
+</tr>
+<tr>
+<td style="text-align:left">F071N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">负债和所有者（或股东权益）合计</td>
+</tr>
+<tr>
+<td style="text-align:left">F070N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">所有者权益（或股东权益）合计</td>
+</tr>
+<tr>
+<td style="text-align:left">F069N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">非正常经营项目收益调整</td>
+</tr>
+<tr>
+<td style="text-align:left">F067N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">少数股东权益</td>
+</tr>
+<tr>
+<td style="text-align:left">F073N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">归属于母公司所有者权益</td>
+</tr>
+<tr>
+<td style="text-align:left">F068N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">外币报表折算价差</td>
+</tr>
+<tr>
+<td style="text-align:left">F065N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">未分配利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F076N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">一般风险准备</td>
+</tr>
+<tr>
+<td style="text-align:left">F064N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">盈余公积</td>
+</tr>
+<tr>
+<td style="text-align:left">F072N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">专项储备</td>
+</tr>
+<tr>
+<td style="text-align:left">F074N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他综合收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F066N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">减：库存股</td>
+</tr>
+<tr>
+<td style="text-align:left">F063N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">资本公积</td>
+</tr>
+<tr>
+<td style="text-align:left">F105N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">永续债-所有者权益</td>
+</tr>
+<tr>
+<td style="text-align:left">F104N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：优先股-所有者权益</td>
+</tr>
+<tr>
+<td style="text-align:left">F103N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他权益工具</td>
+</tr>
+<tr>
+<td style="text-align:left">F062N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">实收资本（或股本）</td>
+</tr>
+<tr>
+<td style="text-align:left">F061N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">负债合计</td>
+</tr>
+<tr>
+<td style="text-align:left">F060N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">非流动负债合计</td>
+</tr>
+<tr>
+<td style="text-align:left">F059N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他非流动负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F058N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">递延所得税负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F075N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">递延收益-非流动负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F057N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">预计负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F056N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">专项应付款</td>
+</tr>
+<tr>
+<td style="text-align:left">F102N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">长期应付职工薪酬</td>
+</tr>
+<tr>
+<td style="text-align:left">F055N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">长期应付款</td>
+</tr>
+<tr>
+<td style="text-align:left">F101N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">永续债-非流动负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F100N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：优先股-非流动负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F054N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付债券</td>
+</tr>
+<tr>
+<td style="text-align:left">F053N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">长期借款</td>
+</tr>
+<tr>
+<td style="text-align:left">F052N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">流动负债合计</td>
+</tr>
+<tr>
+<td style="text-align:left">F051N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他流动负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F115N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">合同负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F114N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付票据及应付账款</td>
+</tr>
+<tr>
+<td style="text-align:left">F113N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">交易性金融负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F099N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">递延收益-流动负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F098N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">预计负债-流动负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F050N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">一年内到期的非流动负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F097N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">划分为持有待售的负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F096N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">代理承销证券款</td>
+</tr>
+<tr>
+<td style="text-align:left">F095N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">代理买卖证券款</td>
+</tr>
+<tr>
+<td style="text-align:left">F094N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">保险合同准备金</td>
+</tr>
+<tr>
+<td style="text-align:left">F093N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付分保账款</td>
+</tr>
+<tr>
+<td style="text-align:left">F049N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付关联公司款</td>
+</tr>
+<tr>
+<td style="text-align:left">F048N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他应付款</td>
+</tr>
+<tr>
+<td style="text-align:left">F047N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：应付股利</td>
+</tr>
+<tr>
+<td style="text-align:left">F046N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：应付利息</td>
+</tr>
+<tr>
+<td style="text-align:left">F045N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应交税费</td>
+</tr>
+<tr>
+<td style="text-align:left">F044N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付职工薪酬</td>
+</tr>
+<tr>
+<td style="text-align:left">F092N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付手续费及佣金</td>
+</tr>
+<tr>
+<td style="text-align:left">F091N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">卖出回购金融资产款</td>
+</tr>
+<tr>
+<td style="text-align:left">F043N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">预收款项</td>
+</tr>
+<tr>
+<td style="text-align:left">F042N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付账款</td>
+</tr>
+<tr>
+<td style="text-align:left">F041N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付票据</td>
+</tr>
+<tr>
+<td style="text-align:left">F090N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">衍生金融负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F040N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">以公允价值计量且其变动计入当期损益的金融负债（20190322弃用）</td>
+</tr>
+<tr>
+<td style="text-align:left">F089N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">拆入资金</td>
+</tr>
+<tr>
+<td style="text-align:left">F088N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">吸收存款及同业存放</td>
+</tr>
+<tr>
+<td style="text-align:left">F087N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">向中央银行借款</td>
+</tr>
+<tr>
+<td style="text-align:left">F039N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">短期借款</td>
+</tr>
+<tr>
+<td style="text-align:left">F038N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">资产总计</td>
+</tr>
+<tr>
+<td style="text-align:left">F037N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">非流动资产合计</td>
+</tr>
+<tr>
+<td style="text-align:left">F036N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他非流动资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F112N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他非流动金融资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F111N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他权益工具投资</td>
+</tr>
+<tr>
+<td style="text-align:left">F110N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他债权投资</td>
+</tr>
+<tr>
+<td style="text-align:left">F116N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">债权投资</td>
+</tr>
+<tr>
+<td style="text-align:left">F035N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">递延所得税资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F034N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">长期待摊费用</td>
+</tr>
+<tr>
+<td style="text-align:left">F033N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">商誉</td>
+</tr>
+<tr>
+<td style="text-align:left">F031N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">无形资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F030N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">油气资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F029N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">生产性生物资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F028N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">固定资产清理</td>
+</tr>
+<tr>
+<td style="text-align:left">F027N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">工程物资</td>
+</tr>
+<tr>
+<td style="text-align:left">F026N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">在建工程</td>
+</tr>
+<tr>
+<td style="text-align:left">F025N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">固定资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F024N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资性房地产</td>
+</tr>
+<tr>
+<td style="text-align:left">F023N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">长期股权投资</td>
+</tr>
+<tr>
+<td style="text-align:left">F022N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">长期应收款</td>
+</tr>
+<tr>
+<td style="text-align:left">F021N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">持有至到期投资</td>
+</tr>
+<tr>
+<td style="text-align:left">F020N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">可供出售金融资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F086N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">发放贷款及垫款-非流动资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F019N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">流动资产合计</td>
+</tr>
+<tr>
+<td style="text-align:left">F018N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他流动资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F119N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">合同资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F118N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应收票据及应收账款</td>
+</tr>
+<tr>
+<td style="text-align:left">F117N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">交易性金融资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F017N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">一年内到期的非流动资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F079N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">发放贷款及垫款-流动资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F085N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">划分为持有待售的资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F016N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：消耗性生物资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F015N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">存货</td>
+</tr>
+<tr>
+<td style="text-align:left">F084N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">买入返售金融资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F012N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应收关联公司款</td>
+</tr>
+<tr>
+<td style="text-align:left">DECLAREDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">公告日期</td>
+</tr>
+<tr>
+<td style="text-align:left">ORGNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">机构名称</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行的非金融资产负债表数据
+data = wta.getWtaBalanceSheet(SECCODE=&quot;000001&quot;)
+</code></pre>
+<hr>
+<h2 id="-">金融资产负债表</h2>
+<p><strong>接口：getWtaFBalanceSheet</strong></p>
+<p><strong>描述：获取金融资产负债表数据</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">ENDDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">报告日期</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">F047N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">资产总计</td>
+</tr>
+<tr>
+<td style="text-align:left">F116N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">租赁负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F115N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">使用权资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F114N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">持有待售负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F113N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">合同负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F112N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他权益工具投资</td>
+</tr>
+<tr>
+<td style="text-align:left">F111N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他债权投资</td>
+</tr>
+<tr>
+<td style="text-align:left">F110N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">债权投资</td>
+</tr>
+<tr>
+<td style="text-align:left">F109N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">持有待售资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F108N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">合同资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F093N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">负债和所有者权益（或股东权益）总计</td>
+</tr>
+<tr>
+<td style="text-align:left">F092N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">所有者权益（或股东权益）合计</td>
+</tr>
+<tr>
+<td style="text-align:left">F089N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">少数股东权益</td>
+</tr>
+<tr>
+<td style="text-align:left">F094N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">归属于母公司所有者权益</td>
+</tr>
+<tr>
+<td style="text-align:left">F090N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">外币报表折算差额</td>
+</tr>
+<tr>
+<td style="text-align:left">F088N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">未分配利润</td>
+</tr>
+<tr>
+<td style="text-align:left">F087N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">一般风险准备</td>
+</tr>
+<tr>
+<td style="text-align:left">F086N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">盈余公积</td>
+</tr>
+<tr>
+<td style="text-align:left">F100N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他综合收益</td>
+</tr>
+<tr>
+<td style="text-align:left">F085N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">减：库存股</td>
+</tr>
+<tr>
+<td style="text-align:left">F084N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">资本公积</td>
+</tr>
+<tr>
+<td style="text-align:left">F099N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">永续债-权益</td>
+</tr>
+<tr>
+<td style="text-align:left">F098N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：优先股-权益</td>
+</tr>
+<tr>
+<td style="text-align:left">F097N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他权益工具</td>
+</tr>
+<tr>
+<td style="text-align:left">F083N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">实收资本（或股本）</td>
+</tr>
+<tr>
+<td style="text-align:left">F082N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">负债合计</td>
+</tr>
+<tr>
+<td style="text-align:left">F081N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F080N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">递延所得税负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F079N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">独立帐户负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F095N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：优先股-负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F078N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付债券</td>
+</tr>
+<tr>
+<td style="text-align:left">F077N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">长期借款</td>
+</tr>
+<tr>
+<td style="text-align:left">F076N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">长期健康险责任准备金</td>
+</tr>
+<tr>
+<td style="text-align:left">F075N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">寿险责任准备金</td>
+</tr>
+<tr>
+<td style="text-align:left">F074N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">未决赔款准备金</td>
+</tr>
+<tr>
+<td style="text-align:left">F073N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">未到期责任准备金</td>
+</tr>
+<tr>
+<td style="text-align:left">F072N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">保户储金及投资款</td>
+</tr>
+<tr>
+<td style="text-align:left">F071N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付保单红利</td>
+</tr>
+<tr>
+<td style="text-align:left">F070N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付赔付款</td>
+</tr>
+<tr>
+<td style="text-align:left">F069N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">预计负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F103N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付款项</td>
+</tr>
+<tr>
+<td style="text-align:left">F102N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付短期融资款</td>
+</tr>
+<tr>
+<td style="text-align:left">F068N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">代理业务负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F067N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付利息</td>
+</tr>
+<tr>
+<td style="text-align:left">F065N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应交税费</td>
+</tr>
+<tr>
+<td style="text-align:left">F066N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付职工薪酬</td>
+</tr>
+<tr>
+<td style="text-align:left">F064N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付分保帐款</td>
+</tr>
+<tr>
+<td style="text-align:left">F063N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付手续费及佣金</td>
+</tr>
+<tr>
+<td style="text-align:left">F062N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">预收保费</td>
+</tr>
+<tr>
+<td style="text-align:left">F061N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">预收款项</td>
+</tr>
+<tr>
+<td style="text-align:left">F060N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付票据</td>
+</tr>
+<tr>
+<td style="text-align:left">F059N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应付帐款</td>
+</tr>
+<tr>
+<td style="text-align:left">F058N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">代理承销证券款</td>
+</tr>
+<tr>
+<td style="text-align:left">F057N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">代理买卖证券款</td>
+</tr>
+<tr>
+<td style="text-align:left">F056N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">吸收存款</td>
+</tr>
+<tr>
+<td style="text-align:left">F055N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">卖出回购金融资产款</td>
+</tr>
+<tr>
+<td style="text-align:left">F054N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">衍生金融负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F053N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">交易性金融负债</td>
+</tr>
+<tr>
+<td style="text-align:left">F052N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">拆入资金</td>
+</tr>
+<tr>
+<td style="text-align:left">F051N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：质押借款</td>
+</tr>
+<tr>
+<td style="text-align:left">F050N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">短期借款</td>
+</tr>
+<tr>
+<td style="text-align:left">F049N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">同业及其他金融机构存放款项</td>
+</tr>
+<tr>
+<td style="text-align:left">F048N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">向中央银行借款</td>
+</tr>
+<tr>
+<td style="text-align:left">F046N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其他资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F045N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">递延所得税资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F044N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">独立帐户资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F043N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">固定资产清理</td>
+</tr>
+<tr>
+<td style="text-align:left">F042N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">长期待摊费用</td>
+</tr>
+<tr>
+<td style="text-align:left">F101N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">商誉</td>
+</tr>
+<tr>
+<td style="text-align:left">F041N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">其中：交易席位费</td>
+</tr>
+<tr>
+<td style="text-align:left">F040N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">无形资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F039N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">在建工程</td>
+</tr>
+<tr>
+<td style="text-align:left">F038N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">固定资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F037N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">存货</td>
+</tr>
+<tr>
+<td style="text-align:left">F036N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">投资性房地产</td>
+</tr>
+<tr>
+<td style="text-align:left">F035N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">存出资本保证金</td>
+</tr>
+<tr>
+<td style="text-align:left">F091N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">贷款及应收款类金融资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F034N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">长期股权投资</td>
+</tr>
+<tr>
+<td style="text-align:left">F033N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">持有至到期投资</td>
+</tr>
+<tr>
+<td style="text-align:left">F032N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">可供出售金融资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F031N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">预付款项</td>
+</tr>
+<tr>
+<td style="text-align:left">F030N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应收款项类投资</td>
+</tr>
+<tr>
+<td style="text-align:left">F029N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">代理业务资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F028N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">存出保证金</td>
+</tr>
+<tr>
+<td style="text-align:left">F027N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">发放贷款及垫款</td>
+</tr>
+<tr>
+<td style="text-align:left">F026N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">定期存款</td>
+</tr>
+<tr>
+<td style="text-align:left">F025N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">保户质押贷款</td>
+</tr>
+<tr>
+<td style="text-align:left">F024N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应收分保长期健康险责任准备金</td>
+</tr>
+<tr>
+<td style="text-align:left">F023N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应收分保寿险责任准备金</td>
+</tr>
+<tr>
+<td style="text-align:left">F022N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应收分保未决赔款准备金</td>
+</tr>
+<tr>
+<td style="text-align:left">F021N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应收分保未到期责任准备金</td>
+</tr>
+<tr>
+<td style="text-align:left">F020N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应收分保帐款</td>
+</tr>
+<tr>
+<td style="text-align:left">F019N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应收代位追偿款</td>
+</tr>
+<tr>
+<td style="text-align:left">F018N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应收保费</td>
+</tr>
+<tr>
+<td style="text-align:left">F017N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应收利息</td>
+</tr>
+<tr>
+<td style="text-align:left">F096N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">应收款项</td>
+</tr>
+<tr>
+<td style="text-align:left">F016N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">买入返售金融资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F015N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">衍生金融资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F014N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">交易性金融资产</td>
+</tr>
+<tr>
+<td style="text-align:left">F013N</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">拆出资金</td>
+</tr>
+<tr>
+<td style="text-align:left">DECLAREDATE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">公告日期</td>
+</tr>
+<tr>
+<td style="text-align:left">ORGNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">机构名称</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行的金融资产负债表数据
+data = wta.getWtaFBalanceSheet(SECCODE=&quot;000001&quot;)
+</code></pre>
+<hr>
+<h2 id="-">指数列表</h2>
+<p><strong>接口：getWtaStockIndex</strong></p>
+<p><strong>描述：获取指数相关信息</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">指数代码</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">指数名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">指数类型(0深证,1上证)</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">code</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票类型(0深证,1上证)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+# 获取平安银行历史的K线数据
+data = wta.getWtaStockIndex()
+</code></pre>
+<hr>
+<h2 id="-">分配预案</h2>
+<p><strong>接口：getWtaProfitPlan</strong></p>
+<p><strong>描述：获取指数相关信息</strong></p>
+<h3 id="-">输入参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">是否必传</th>
+<th style="text-align:left">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">F001D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">分红年度</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出参数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SECCODE</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票代码</td>
+</tr>
+<tr>
+<td style="text-align:left">SECNAME</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股票名称</td>
+</tr>
+<tr>
+<td style="text-align:left">F001D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">分红年度</td>
+</tr>
+<tr>
+<td style="text-align:left">F010N</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">送股比例</td>
+</tr>
+<tr>
+<td style="text-align:left">F011N</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">转增比例</td>
+</tr>
+<tr>
+<td style="text-align:left">F012N</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">派息比例(人民币)</td>
+</tr>
+<tr>
+<td style="text-align:left">F018D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">股权登记日</td>
+</tr>
+<tr>
+<td style="text-align:left">F020D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">除权日</td>
+</tr>
+<tr>
+<td style="text-align:left">F006D</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">实施方案公告日期</td>
+</tr>
+<tr>
+<td style="text-align:left">F007V</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">实施方案分红说明</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接口示例</h3>
+<pre><code class="lang-python">wta = wta_data.wta_api(&quot;secret_key&quot;,&quot;secret_id&quot;)
+
+data = wta.getWtaProfitPlan(SECCODE=&quot;000001&quot;)
+</code></pre>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
