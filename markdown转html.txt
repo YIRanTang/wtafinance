@@ -1,5 +1,0 @@
-npm install i5ting_toc -g
-
-i5ting_toc -f  "赢家通财经大数据(wtaFinance)SDK 方法说明.md"
-
-https://blog.csdn.net/weixin_38601833/article/details/94585595#1%E5%9C%A8%E7%BA%BF%E8%BD%AC%E6%8D%A2%E7%9A%84%E7%BD%91%E7%AB%99

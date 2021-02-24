@@ -3,7 +3,7 @@ import setuptools
 
 setup(
     name='wtafinance',
-    version='1.0.5',
+    version='1.0.18',
     description='This is wtafinance of the setup',
     author='tby',
     author_email='1049268431@qq.com',

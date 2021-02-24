@@ -3,11 +3,11 @@ import pymongo
 # 数据库基本信息
 db_configs = {
     'type': 'mongo',
-    'host': '106.53.251.60',
+    'host': '',
     'port': '27017',
-    "user": "root",
-    "password": "root#123456",
-    'db_name': 'zjzt'
+    "user": "",
+    "password": "",
+    'db_name': ''
 }
 
 
